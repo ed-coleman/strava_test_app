@@ -2,8 +2,8 @@ const auth_link = "https://www.strava.com/oauth/token";
 
 export function getActivites(res) {
 
-console.log(res.access_token); 
-  const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`;
+console.log(res.access_token);
+  const activities_link = `https://www.strava.com/api/v3/clubs/ColumbiaCycling?access_token=${res.access_token}`;
   fetch(activities_link).then((res) => console.log(res.json()));
 }
 
@@ -16,9 +16,9 @@ export function reAuthorize() {
     },
 
     body: JSON.stringify({
-      client_id: "107444",
-      client_secret: "759218e8ae3715bfc8d094dbb4c8933debf4ca0e",
-      refresh_token: "7acc5210bae1a7cb0b35dfad971ceb5fb6424a4f",
+      client_id: import.meta.env.VITE_CLIENT_ID,
+      client_secret: import.meta.env.VITE_CLIENT_SECRET,
+      refresh_token: import.meta.env.VITE_REFRESH_TOKEN,
       grant_type: "refresh_token",
     }),
   })
